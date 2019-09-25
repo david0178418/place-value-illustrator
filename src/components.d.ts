@@ -12,6 +12,9 @@ import {
 
 export namespace Components {
   interface AppHome {}
+  interface AppNumberBox {
+    'selectedDigit'?: number;
+  }
   interface AppProfile {
     'match': MatchResults | null;
   }
@@ -27,6 +30,12 @@ declare global {
     new (): HTMLAppHomeElement;
   };
 
+  interface HTMLAppNumberBoxElement extends Components.AppNumberBox, HTMLStencilElement {}
+  var HTMLAppNumberBoxElement: {
+    prototype: HTMLAppNumberBoxElement;
+    new (): HTMLAppNumberBoxElement;
+  };
+
   interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {}
   var HTMLAppProfileElement: {
     prototype: HTMLAppProfileElement;
@@ -40,6 +49,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement;
+    'app-number-box': HTMLAppNumberBoxElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
   }
@@ -47,6 +57,9 @@ declare global {
 
 declare namespace LocalJSX {
   interface AppHome extends JSXBase.HTMLAttributes<HTMLAppHomeElement> {}
+  interface AppNumberBox extends JSXBase.HTMLAttributes<HTMLAppNumberBoxElement> {
+    'selectedDigit'?: number;
+  }
   interface AppProfile extends JSXBase.HTMLAttributes<HTMLAppProfileElement> {
     'match'?: MatchResults | null;
   }
@@ -54,6 +67,7 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'app-home': AppHome;
+    'app-number-box': AppNumberBox;
     'app-profile': AppProfile;
     'app-root': AppRoot;
   }

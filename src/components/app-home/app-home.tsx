@@ -1,45 +1,5 @@
 import { Component, h, State } from '@stencil/core';
 
-interface NumberBoxProps {
-	value: number;
-	selected?: boolean;
-}
-
-function NumberBox(props: NumberBoxProps) {
-	const {
-		value,
-		selected,
-	} = props;
-	return (
-		<div class={`number-block ${selected ? 'number-block-selected' : ''}`}>
-			{value}
-		</div>
-	);
-}
-
-interface NumberStripProps {
-	selectedDigit?: number;
-}
-
-function NumberStrip({selectedDigit}: NumberStripProps) {
-	const range = [...Array(10).keys()];
-	return (
-		<div
-			class="number-strip"
-			style={{
-				top: selectedDigit ?  `-${selectedDigit * 50}px` : '',
-			}}
-		>
-			{range.map(n => (
-				<NumberBox
-					value={n}
-					selected={selectedDigit === n}
-				/>
-			))}
-		</div>
-	);
-}
-
 interface NumberIllustrationProps {
 	number: number;
 }
@@ -50,8 +10,9 @@ function NumberIllustration({number}: NumberIllustrationProps) {
 	return (
 		<div class="number-illustration">
 			<div class="number-window"></div>
-			{splitNumber.map(n => (
-				<NumberStrip
+			{splitNumber.map((n, i) => (
+				<app-number-box
+					key={splitNumber.length - i}
 					selectedDigit={+n}
 				/>
 			))}
@@ -74,7 +35,7 @@ export class AppHome {
 						min="0"
 						type="number"
 						value={this.number}
-						onChange={({target}) => this.number = (target as any).value}
+						onKeyUp={({target}) => this.number = +(target as any).value || 0}
 					/>
 				</p>
 				<p>
