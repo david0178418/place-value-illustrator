@@ -1,0 +1,65 @@
+.app-home {
+	padding: 10px;
+}
+
+button {
+	background: #5851ff;
+	color: white;
+	margin: 8px;
+	border: none;
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 16px 20px;
+	border-radius: 2px;
+	box-shadow: 0 8px 16px rgba(0,0,0,.1), 0 3px 6px rgba(0,0,0,.08);
+	outline: 0;
+	letter-spacing: .04em;
+	transition: all .15s ease;
+	cursor: pointer;
+}
+
+button:hover {
+	box-shadow: 0 3px 6px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.1);
+	transform: translateY(1px);
+}
+
+.controls {
+	position: relative;
+	z-index: 10;
+}
+
+.number-strip {
+	display: inline-block;
+	border: 1px solid black;
+	font-size: 25px;
+	position: relative;
+}
+
+.number-block {
+	padding: 10px;
+}
+
+.number-block-selected {
+	font-weight: bold;
+}
+
+.number-block:not(:last-child) {
+	border-bottom: 1px solid black;
+}
+
+.number-illustration {
+	height: 1000px;
+	margin-top: calc(9 * 50px);
+	position: relative;
+	display: inline-block;
+}
+
+.number-window {
+	border: 5px solid red;
+	box-sizing: border-box;
+	height: 50px;
+	position: absolute;
+	width: 100%;
+	z-index: 10;
+}
